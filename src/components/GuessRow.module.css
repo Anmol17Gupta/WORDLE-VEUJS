@@ -1,0 +1,100 @@
+@reference '../index.css';
+
+.hasLetter {
+    @apply border-gray-300;
+    animation: pop 80ms ease-in;
+}
+
+@keyframes pop {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.1;
+    }
+}
+
+.wrong {
+    @apply bg-gray-700;
+    @apply border-gray-700;
+}
+
+.correct {
+    @apply bg-green-600;
+    @apply border-green-600;
+}
+
+.wrongPlace {
+    border-color: #b59f3b;
+    background-color: #b59f3b;
+}
+
+.shake {
+    animation: shake 600ms;
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        tranform: translateX(-1px);
+    }
+
+    20%,
+    80% {
+        transform: translateX(2px);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translateX(-4px);
+    }
+
+    40%,
+    60% {
+        transform: translateX(4px);
+    }
+}
+
+.flip {
+    animation: flip 600ms ease-in;
+}
+
+@keyframes flip {
+    0% {
+        transform: rotateX(0deg);
+    }
+    50% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.jump {
+    animation: jump 1000ms;
+}
+
+@keyframes jump {
+    0%,
+    20% {
+        transform : translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    50% {
+        transform: translatey(5px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+    80% {
+        transform: translateY(2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

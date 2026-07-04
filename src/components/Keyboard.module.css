@@ -1,0 +1,32 @@
+@reference '../index.css';
+
+.spacer {
+    flex: 0.5;
+}
+
+.largeKey {
+    flex: 1.5;
+}
+
+.defaultKey {
+    @apply bg-gray-500;
+    @apply active:bg-slate-400;
+}
+
+.wrong {
+    @apply bg-gray-700;
+    @apply border-gray-700;
+    @apply active:bg-gray-600;
+}
+
+.correct {
+    @apply bg-green-600;
+    @apply border-green-600;
+    @apply active:bg-green-500;
+}
+
+.wrongPlace {
+    border-color: #b59f3b;
+    background-color: #b59f3b;
+    @apply active:bg-yellow-500;
+}

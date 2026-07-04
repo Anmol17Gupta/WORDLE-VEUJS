@@ -1,0 +1,55 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Bundler / Build outputs
+dist/
+dist-ssr/
+build/
+.nuxt/
+.output/
+out/
+.vuepress/dist
+target/
+
+# Local environment variables
+.env
+.env.local
+.env.*.local
+
+# TypeScript / Build caches
+*.tsbuildinfo
+.node_cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# IDEs and Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
