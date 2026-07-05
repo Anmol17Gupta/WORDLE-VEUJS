@@ -18,15 +18,20 @@ import { getTileStates } from '../utils/getTileStates.ts';
 import {
     getStoredGameState,
     setStoredGameState,
+    clearStoredGameState,
 } from '../utils/gameStateStorage.ts';
 
 type Props = {
     solution: string;
+    newGame: () => void;
 };
 
-export const Game = ({ solution }: Props) => {
+export const Game = ({ solution, newGame }: Props) => {
     const [currentGuess, dispatch] = useCurrentGuessReducer();
-    const [guesses, setGuesses] = useState<Array<string>>(getStoredGameState());
+    const [guesses, setGuesses] = useState<string[]>(() => {
+        const storedGame = getStoredGameState();
+        return storedGame?.guesses ?? [];
+    });
 
     const [gameCompletionState, setGameCompletion] = useState<
         'active' | 'won' | 'lost'
@@ -40,11 +45,11 @@ export const Game = ({ solution }: Props) => {
     const [shakeCurrentRow, setShakeCurrentRow] = useState(false);
 
     const setGuessesCallback = useCallback(
-        (guesses: Array<string>) => {
+        (guesses: string[]) => {
             setGuesses(guesses);
-            setStoredGameState(guesses);
+            setStoredGameState(solution, guesses);
         },
-        []
+        [solution]
     );
 
     const showToast = useCallback((text: string) => {
@@ -75,12 +80,12 @@ export const Game = ({ solution }: Props) => {
         setShakeCurrentRow(false);
 
         setGuesses([]);
-        setStoredGameState([]);
-
+        dispatch({ type: 'clear' });
         setGameCompletion('active');
 
-        dispatch({ type: 'clear' });
-    }, [dispatch]);
+        clearStoredGameState();
+        newGame();
+    }, [dispatch, newGame]);
 
     const submitWord = useCallback(() => {
         if (currentGuess.length !== GAME_WORD_LEN) {
